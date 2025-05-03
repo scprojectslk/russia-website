@@ -54,20 +54,23 @@
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: white; /* Ensure table has a white background */
+            background-color: white; /* Keep the table background white for contrast */
             border: 1px solid #ddd; /* Add a border to the table itself */
             color: black;
             box-sizing: border-box;
         }
 
-        .features-table th, .features-table td {
+        .features-table th {
+            background-color: #f2f2f2; /* Keep the header row a light gray */
+            color: black; /* Ensure header text is black */
+        }
+
+        .features-table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-        }
-
-        .features-table th {
-            background-color: #f2f2f2;
+            background-color: #ADD8E6; /* Light Blue for the data cells */
+            color: black; /* Ensure data text is readable */
         }
 
         /* Styling for the cultural review section */
