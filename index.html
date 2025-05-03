@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Russia</title>
     <style>
+        @font-face {
+            font-family: 'BomberEscortGrad';
+            src: url('bomberescortgrad.otf') format('opentype'), /* Assuming the filename is without '_bold' */
+                 url('bomberescortgrad.ttf') format('truetype'); /* Assuming the filename is without '_bold' */
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             background-color: #0039A6; /* Russian Flag Blue */
             color: white; /* Default text color to white */
@@ -20,7 +28,7 @@
             padding: 25px; /* Increased padding for a larger header */
             text-align: center;
             font-size: 3.5em; /* Even larger font size for the header */
-            font-family: 'Segoe Script', cursive; /* A fancy, script-like font */
+            font-family: 'BomberEscortGrad', cursive; /* Apply the custom font */
             text-shadow: none; /* Removed text shadow for better clarity with black font */
             border: 1px solid black;
             box-sizing: border-box;
