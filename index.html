@@ -51,17 +51,6 @@
             transform: rotateY(180deg);
         }
 
-        @keyframes flip-country {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(180deg); }
-            100% { transform: rotateY(360deg); }
-        }
-
-        .country-image-container:hover .country-image,
-        .country-image-container.auto-flip .country-image {
-            animation: flip-country 1s linear infinite; /* Adjust timing as needed */
-        }
-
         p {
             color: white;
             background-color: #0039A6; /* Russian Flag Blue for paragraph background */
@@ -144,17 +133,6 @@
             transform: rotateY(180deg);
         }
 
-        @keyframes flip-cultural {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(180deg); }
-            100% { transform: rotateY(360deg); }
-        }
-
-        .cultural-photo-item:hover .cultural-photo,
-        .cultural-photo-item.auto-flip .cultural-photo {
-            animation: flip-cultural 1s linear infinite; /* Adjust timing as needed */
-        }
-
         .cultural-description {
             margin-top: 5px; /* Reduced margin above description */
             color: white;
@@ -187,16 +165,14 @@
             const countryImageContainer = document.querySelector('.country-image-container');
             const culturalPhotoItems = document.querySelectorAll('.cultural-photo-item');
 
-            setInterval(() => {
-                countryImageContainer.classList.toggle('auto-flip');
-            }, 5000);
+            countryImageContainer.addEventListener('click', () => {
+                countryImageContainer.classList.toggle('flipped');
+            });
 
-            culturalPhotoItems.forEach((item, index) => {
-                setTimeout(() => {
-                    setInterval(() => {
-                        item.classList.toggle('auto-flip');
-                    }, 5000);
-                }, index * 1500); // Stagger the start times
+            culturalPhotoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('flipped');
+                });
             });
         });
     </script>
