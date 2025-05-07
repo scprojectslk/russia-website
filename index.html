@@ -11,6 +11,11 @@
             margin: 0;
             padding-top: 20px;
             font-family: sans-serif;
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        body:hover {
+            background-color: #002a7a; /* Slightly darker blue on hover */
         }
 
         /* Styling for the header */
@@ -26,11 +31,16 @@
             box-sizing: border-box;
             margin-bottom: 20px;
             text-transform: uppercase; /* Converts text to block capitals */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .header:hover {
+            transform: scale(1.02); /* Slight scale on hover */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         /* Styling for the country image */
-        .country-image-container {
-            perspective: 1000px; /* Creates a 3D space for the flip */
+        .country-image {
             display: block;
             margin: 20px auto;
             max-width: 80%;
@@ -38,17 +48,12 @@
             cursor: pointer;
             border: 1px solid #ccc;
             box-sizing: border-box;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
 
-        .country-image {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-            transform-style: preserve-3d;
-        }
-
-        .country-image.flipped {
-            transform: rotateY(180deg);
+        .country-image:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            opacity: 0.9;
         }
 
         p {
@@ -60,6 +65,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
             border-radius: 5px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        p:hover {
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
         }
 
         /* Styling for the table */
@@ -72,6 +82,11 @@
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .features-table:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
         }
 
         .features-table th {
@@ -86,6 +101,11 @@
             padding: 10px;
             text-align: left;
             background-color: #0039A6; /* Russian Flag Blue for table data cells */
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .features-table td:hover {
+            background-color: #003080; /* Slightly darker blue on hover */
         }
 
         /* Styling for the cultural review section */
@@ -97,12 +117,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
             border-radius: 5px;
+            transition: box-shadow 0.3s ease-in-out;
         }
 
-        .cultural-review h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 15px;
+        .cultural-review:hover {
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
         }
 
         .cultural-photo-container {
@@ -114,7 +133,6 @@
         }
 
         .cultural-photo-item {
-            perspective: 1000px;
             text-align: center;
         }
 
@@ -125,12 +143,14 @@
             box-sizing: border-box;
             border-radius: 5px;
             margin: 0 10px; /* Add some horizontal margin around each image */
-            transition: transform 0.5s ease-in-out;
-            transform-style: preserve-3d;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            cursor: pointer;
         }
 
-        .cultural-photo.flipped {
-            transform: rotateY(180deg);
+        .cultural-photo:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+            opacity: 0.8;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .cultural-description {
@@ -154,35 +174,20 @@
             border-radius: 5px;
             text-align: center;
             width: fit-content;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
         .details-button:hover {
             background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const countryImageContainer = document.querySelector('.country-image-container');
-            const culturalPhotoItems = document.querySelectorAll('.cultural-photo-item');
-
-            countryImageContainer.addEventListener('click', () => {
-                countryImageContainer.classList.toggle('flipped');
-            });
-
-            culturalPhotoItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('flipped');
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="header">Russia</div>
 
-    <div class="country-image-container" onclick="window.location.href='https://www.gov.ru/en/'">
-        <img src="russia.jpg" alt="Image of Russia" class="country-image">
-    </div>
+    <img src="russia.jpg" alt="Image of Russia" class="country-image" onclick="window.location.href='https://www.gov.ru/en/'">
 
     <p>Russia, also officially known as the Russian Federation, is a transcontinental country spanning Eastern Europe and Northern Asia. It is the largest country in the world by area, covering over 17 million square kilometers, and the ninth-most populous, with over 146 million inhabitants. Russia extends across eleven time zones and shares land borders with fourteen countries.</p>
 
