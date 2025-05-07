@@ -11,11 +11,11 @@
             margin: 0;
             padding-top: 20px;
             font-family: sans-serif;
-            transition: background-color 0.3s ease; /* Smooth background color transition */
+            transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
         }
 
         body:hover {
-            background-color: #002a7a; /* Slightly darker blue on hover */
+            background-color: #002a7a; /* More noticeably darker blue on hover */
         }
 
         /* Styling for the header */
@@ -35,8 +35,8 @@
         }
 
         .header:hover {
-            transform: scale(1.02); /* Slight scale on hover */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05); /* More noticeable scale on hover */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* More prominent shadow */
         }
 
         /* Styling for the country image */
@@ -52,8 +52,8 @@
         }
 
         .country-image:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
-            opacity: 0.9;
+            transform: scale(1.1); /* More noticeable zoom on hover */
+            opacity: 0.8;
         }
 
         p {
@@ -69,7 +69,7 @@
         }
 
         p:hover {
-            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); /* More prominent shadow */
         }
 
         /* Styling for the table */
@@ -82,11 +82,12 @@
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
         .features-table:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
+            transform: translateY(-5px); /* More noticeable lift on hover */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
         }
 
         .features-table th {
@@ -101,11 +102,12 @@
             padding: 10px;
             text-align: left;
             background-color: #0039A6; /* Russian Flag Blue for table data cells */
-            transition: background-color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         }
 
         .features-table td:hover {
-            background-color: #003080; /* Slightly darker blue on hover */
+            background-color: #003080; /* More noticeably darker blue on hover */
+            color: #f0f0f0; /* Slightly lighter text on hover for contrast */
         }
 
         /* Styling for the cultural review section */
@@ -121,7 +123,7 @@
         }
 
         .cultural-review:hover {
-            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); /* More prominent shadow */
         }
 
         .cultural-photo-container {
@@ -148,9 +150,9 @@
         }
 
         .cultural-photo:hover {
-            transform: scale(1.1); /* Slight zoom on hover */
-            opacity: 0.8;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(1.15); /* More noticeable zoom on hover */
+            opacity: 0.7; /* More noticeable opacity change */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3); /* More prominent shadow */
         }
 
         .cultural-description {
@@ -178,9 +180,9 @@
         }
 
         .details-button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: #45a049; /* More noticeable color change */
+            transform: scale(1.08); /* More noticeable scale */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4); /* More prominent shadow */
         }
     </style>
 </head>
