@@ -177,10 +177,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
-            const elementsWithBg = document.querySelectorAll('body, p, .features-table, .features-table th, .features-table td, .cultural-review, .cultural-description, .details-button');
+            const paragraphs = document.querySelectorAll('p');
             const table = document.querySelector('.features-table');
             const tableHeaders = document.querySelectorAll('.features-table th');
             const tableData = document.querySelectorAll('.features-table td');
+            const culturalReview = document.querySelector('.cultural-review');
             const culturalDescriptions = document.querySelectorAll('.cultural-description');
             const detailsButton = document.querySelector('.details-button');
             const culturalPhotos = document.querySelectorAll('.cultural-photo');
@@ -192,18 +193,37 @@
                 const currentColor = colors[colorIndex];
                 const isWhite = currentColor === '#FFFFFF';
 
-                elementsWithBg.forEach(element => {
-                    element.style.backgroundColor = currentColor;
-                    element.style.color = isWhite ? 'black' : 'white';
-                    element.style.borderColor = isWhite ? 'black' : 'transparent'; // Default border to transparent, adjust if needed
+                body.style.backgroundColor = currentColor;
+                body.style.color = isWhite ? 'black' : 'white';
+
+                paragraphs.forEach(p => {
+                    p.style.backgroundColor = currentColor;
+                    p.style.color = isWhite ? 'black' : 'white';
+                    p.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
                 });
 
-                // Special handling for table borders
+                table.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
                 table.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
-                tableHeaders.forEach(th => th.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)');
-                tableData.forEach(td => td.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)');
+                table.style.color = isWhite ? 'black' : 'white';
+
+                tableHeaders.forEach(th => {
+                    th.style.backgroundColor = currentColor;
+                    th.style.color = isWhite ? 'black' : 'white';
+                    th.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
+                });
+
+                tableData.forEach(td => {
+                    td.style.backgroundColor = currentColor; // Forcefully set background color
+                    td.style.color = isWhite ? 'black' : 'white';
+                    td.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)';
+                });
+
+                culturalReview.style.backgroundColor = currentColor;
+                culturalReview.style.color = isWhite ? 'black' : 'white';
+                culturalReview.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
 
                 culturalDescriptions.forEach(description => {
+                    description.style.backgroundColor = currentColor;
                     description.style.color = isWhite ? 'black' : 'white';
                 });
 
