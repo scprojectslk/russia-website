@@ -6,15 +6,14 @@
     <title>Russia</title>
     <style>
         body {
-            background-color: #0039A6; /* Initial background: Russian Flag Blue */
+            background-color: #0039A6;
             color: white;
             margin: 0;
             padding-top: 20px;
             font-family: sans-serif;
-            transition: background-color 1s ease-in-out; /* Smooth transition */
+            transition: background-color 1s ease-in-out, color 1s ease-in-out; /* Added color transition */
         }
 
-        /* Rest of your CSS */
         .header {
             background: linear-gradient(to bottom, #FFFFFF 20%, #0039A6 40%, #0039A6 60%, #D52B1E 80%);
             color: black;
@@ -53,7 +52,6 @@
         }
 
         p {
-            color: white;
             background-color: #0039A6;
             padding: 15px;
             margin: 20px auto;
@@ -61,7 +59,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
             border-radius: 5px;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         p:hover {
@@ -77,6 +75,7 @@
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         .features-table th {
@@ -85,6 +84,7 @@
             padding: 10px;
             text-align: left;
             cursor: pointer;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         .features-table td {
@@ -92,7 +92,7 @@
             padding: 10px;
             text-align: left;
             background-color: #0039A6;
-            transition: background-color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         .features-table td:hover {
@@ -107,7 +107,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
             border-radius: 5px;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         .cultural-review:hover {
@@ -145,9 +145,9 @@
 
         .cultural-description {
             margin-top: 5px;
-            color: white;
             text-align: center;
             font-size: 0.9em;
+            transition: color 1s ease-in-out; /* Added transition */
         }
 
         .details-button {
@@ -163,7 +163,7 @@
             border-radius: 5px;
             text-align: center;
             width: fit-content;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  background-color 1s ease-in-out, color 1s ease-in-out; /* Added transitions */
         }
 
         .details-button:hover {
@@ -175,15 +175,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
+            const elementsToColor = document.querySelectorAll('body, p, .features-table, .features-table th, .features-table td, .cultural-review, .cultural-description, .details-button');
             const colors = ['#FFFFFF', '#0039A6', '#D52B1E']; // White, Blue, Red
             let colorIndex = 0;
 
-            function changeBackgroundColor() {
-                body.style.backgroundColor = colors[colorIndex];
+            function changeColors() {
+                const currentColor = colors[colorIndex];
+                elementsToColor.forEach(element => {
+                    if (element === body) {
+                        element.style.backgroundColor = currentColor;
+                    } else if (element.tagName === 'TH' || element.tagName === 'TD' || element.tagName === 'P' || element.classList.contains('cultural-review') || element.classList.contains('details-button')) {
+                        element.style.backgroundColor = currentColor;
+                        element.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white'; // Adjust text color for contrast
+                    } else if (element.classList.contains('cultural-description')) {
+                        element.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                    } else {
+                        element.style.color = currentColor; // Apply to other text elements
+                    }
+                });
                 colorIndex = (colorIndex + 1) % colors.length;
             }
 
-            setInterval(changeBackgroundColor, 5000); // Change every 5 seconds
+            setInterval(changeColors, 5000); // Change every 5 seconds
 
             // Dynamic Features Table
             const featuresTableBody = document.querySelector('.features-table tbody');
@@ -230,44 +243,43 @@
             });
         });
     </script>
-</head>
-<body>
-    <div class="header">Russia</div>
+    <body>
+        <div class="header">Russia</div>
 
-    <img src="russia.jpg" alt="Image of Russia" class="country-image" onclick="window.location.href='https://www.gov.ru/en/'">
+        <img src="russia.jpg" alt="Image of Russia" class="country-image" onclick="window.location.href='https://www.gov.ru/en/'">
 
-    <p>Russia, also officially known as the Russian Federation, is a transcontinental country spanning Eastern Europe and Northern Asia. It is the largest country in the world by area, covering over 17 million square kilometers, and the ninth-most populous, with over 146 million inhabitants. Russia extends across eleven time zones and shares land borders with fourteen countries.</p>
+        <p>Russia, also officially known as the Russian Federation, is a transcontinental country spanning Eastern Europe and Northern Asia. It is the largest country in the world by area, covering over 17 million square kilometers, and the ninth-most populous, with over 146 million inhabitants. Russia extends across eleven time zones and shares land borders with fourteen countries.</p>
 
-    <table class="features-table">
-        <thead>
-            <tr>
-                <th>Feature</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
+        <table class="features-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
             </tbody>
-    </table>
+        </table>
 
-    <div class="cultural-review">
-        <h2>Cultural Review</h2>
-        <div class="cultural-photo-container">
-            <div class="cultural-photo-item">
-                <img src="russian_ballet.jpg" alt="Russian Ballet" class="cultural-photo">
-                <p class="cultural-description">Russian ballet is world-renowned for its grace, precision, and dramatic storytelling.</p>
-            </div>
-            <div class="cultural-photo-item">
-                <img src="saint_basil_cathedral.jpg" alt="Saint Basil's Cathedral" class="cultural-photo">
-                <p class="cultural-description">Saint Basil's Cathedral in Moscow is an iconic example of Russian Orthodox architecture.</p>
-            </div>
-            <div class="cultural-photo-item">
-                <img src="russian_tea_ceremony.jpg" alt="Russian Tea Ceremony" class="cultural-photo">
-                <p class="cultural-description">The Russian tea ceremony emphasizes hospitality and conversation.</p>
+        <div class="cultural-review">
+            <h2>Cultural Review</h2>
+            <div class="cultural-photo-container">
+                <div class="cultural-photo-item">
+                    <img src="russian_ballet.jpg" alt="Russian Ballet" class="cultural-photo">
+                    <p class="cultural-description">Russian ballet is world-renowned for its grace, precision, and dramatic storytelling.</p>
+                </div>
+                <div class="cultural-photo-item">
+                    <img src="saint_basil_cathedral.jpg" alt="Saint Basil's Cathedral" class="cultural-photo">
+                    <p class="cultural-description">Saint Basil's Cathedral in Moscow is an iconic example of Russian Orthodox architecture.</p>
+                </div>
+                <div class="cultural-photo-item">
+                    <img src="russian_tea_ceremony.jpg" alt="Russian Tea Ceremony" class="cultural-photo">
+                    <p class="cultural-description">The Russian tea ceremony emphasizes hospitality and conversation.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <a href="https://www.gov.ru/en/" class="details-button">For More Details</a>
+        <a href="https://www.gov.ru/en/" class="details-button">For More Details</a>
 
-</body>
+    </body>
 </html>
