@@ -75,7 +75,7 @@
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
-            transition: background-color 1s ease-in-out, color 1s ease-in-out;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
         }
 
         .features-table th {
@@ -84,7 +84,7 @@
             padding: 10px;
             text-align: left;
             cursor: pointer;
-            transition: background-color 1s ease-in-out, color 1s ease-in-out;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
         }
 
         .features-table td {
@@ -92,7 +92,7 @@
             padding: 10px;
             text-align: left;
             background-color: #0039A6;
-            transition: background-color 0.2s ease-in-out, color 1s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
         }
 
         .features-table td:hover {
@@ -107,7 +107,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
             border-radius: 5px;
-            transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
         }
 
         .cultural-review:hover {
@@ -133,7 +133,7 @@
             box-sizing: border-box;
             border-radius: 5px;
             margin: 0 10px;
-            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
             cursor: pointer;
         }
 
@@ -163,7 +163,7 @@
             border-radius: 5px;
             text-align: center;
             width: fit-content;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out; /* Added border-color transition */
         }
 
         .details-button:hover {
@@ -180,39 +180,50 @@
             const tableData = document.querySelectorAll('.features-table td');
             const culturalReview = document.querySelector('.cultural-review');
             const culturalDescriptions = document.querySelectorAll('.cultural-description');
-             const detailsButton = document.querySelector('.details-button');
+            const detailsButton = document.querySelector('.details-button');
+            const culturalPhotos = document.querySelectorAll('.cultural-photo');
 
             const colors = ['#FFFFFF', '#0039A6', '#D52B1E']; // White, Blue, Red
             let colorIndex = 0;
 
             function changeColors() {
                 const currentColor = colors[colorIndex];
-                body.style.backgroundColor = currentColor;
-                body.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                const isWhite = currentColor === '#FFFFFF';
 
-                table.style.backgroundColor = (currentColor === '#FFFFFF') ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
-                table.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                body.style.backgroundColor = currentColor;
+                body.style.color = isWhite ? 'black' : 'white';
+
+                table.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+                table.style.color = isWhite ? 'black' : 'white';
+                table.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
 
                 tableHeaders.forEach(header => {
-                    header.style.backgroundColor = (currentColor === '#FFFFFF') ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-                    header.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                    header.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
+                    header.style.color = isWhite ? 'black' : 'white';
+                    header.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
                 });
 
-                 tableData.forEach(data =>{
+                tableData.forEach(data => {
                     data.style.backgroundColor = currentColor;
-                     data.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
-                 })
+                    data.style.color = isWhite ? 'black' : 'white';
+                    data.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)';
+                });
 
                 culturalReview.style.backgroundColor = currentColor;
-                culturalReview.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                culturalReview.style.color = isWhite ? 'black' : 'white';
+                culturalReview.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
 
                 culturalDescriptions.forEach(description => {
-                    description.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                    description.style.color = isWhite ? 'black' : 'white';
                 });
 
-                detailsButton.style.backgroundColor = (currentColor === '#FFFFFF') ? '#38733b' : '#4CAF50';  // Darker green for white
-                detailsButton.style.color = (currentColor === '#FFFFFF') ? 'black' : 'white';
+                detailsButton.style.backgroundColor = isWhite ? '#38733b' : '#4CAF50';
+                detailsButton.style.color = isWhite ? 'black' : 'white';
+                detailsButton.style.borderColor = isWhite ? 'black' : 'transparent'; // Adjust border if needed
 
+                culturalPhotos.forEach(photo => {
+                    photo.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.3)';
+                });
 
                 colorIndex = (colorIndex + 1) % colors.length;
             }
