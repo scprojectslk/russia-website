@@ -60,6 +60,7 @@
             box-sizing: border-box;
             border-radius: 5px;
             transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out;
+            color: white; /* Default text color */
         }
 
         p:hover {
@@ -93,6 +94,7 @@
             text-align: left;
             background-color: #0039A6;
             transition: background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out;
+            color: white; /* Default text color */
         }
 
         .features-table td:hover {
@@ -108,6 +110,7 @@
             box-sizing: border-box;
             border-radius: 5px;
             transition: box-shadow 0.3s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out, border-color 1s ease-in-out;
+            color: white; /* Default text color */
         }
 
         .cultural-review:hover {
@@ -151,12 +154,14 @@
             background-color: transparent;
             padding: 5px;
             border-radius: 3px;
+            color: white; /* Default text color */
         }
 
         .details-button {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
+            background-color: #4CAF50; /* Always Green */
             color: white;
             border: none;
             cursor: pointer;
@@ -165,7 +170,7 @@
             border-radius: 5px;
             text-align: center;
             width: fit-content;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  color 1s ease-in-out, border-color 1s ease-in-out, background-color 1s ease-in-out;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  color 1s ease-in-out, border-color 1s ease-in-out;
         }
 
         .details-button:hover {
@@ -192,44 +197,53 @@
             function changeColors() {
                 const currentColor = colors[colorIndex];
                 const isWhite = currentColor === '#FFFFFF';
+                const isBlue = currentColor === '#0039A6';
+                const isRed = currentColor === '#D52B1E';
+
+                 let oppositeColor = 'white'; // Default
+                    if (isWhite) {
+                        oppositeColor = 'black';
+                    } else if (isBlue || isRed) {
+                        oppositeColor = 'white';
+                    }
 
                 body.style.backgroundColor = currentColor;
-                body.style.color = isWhite ? 'black' : 'white';
+                body.style.color = oppositeColor;
 
                 paragraphs.forEach(p => {
                     p.style.backgroundColor = currentColor;
-                    p.style.color = isWhite ? 'black' : 'white';
+                     p.style.color = oppositeColor;
                     p.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
                 });
 
-                table.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+                 table.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
                 table.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
-                table.style.color = isWhite ? 'black' : 'white';
+                table.style.color = oppositeColor;
 
                 tableHeaders.forEach(th => {
                     th.style.backgroundColor = currentColor;
-                    th.style.color = isWhite ? 'black' : 'white';
+                     th.style.color = oppositeColor;
                     th.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
                 });
 
                 tableData.forEach(td => {
-                    td.style.backgroundColor = currentColor; // Forcefully set background color
-                    td.style.color = isWhite ? 'black' : 'white';
+                    td.style.backgroundColor = currentColor;
+                     td.style.color = oppositeColor;
                     td.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)';
                 });
 
                 culturalReview.style.backgroundColor = currentColor;
-                culturalReview.style.color = isWhite ? 'black' : 'white';
+                 culturalReview.style.color = oppositeColor;
                 culturalReview.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
 
                 culturalDescriptions.forEach(description => {
                     description.style.backgroundColor = currentColor;
-                    description.style.color = isWhite ? 'black' : 'white';
+                     description.style.color = oppositeColor;
                 });
 
-                detailsButton.style.backgroundColor = currentColor;
-                detailsButton.style.color = isWhite ? 'black' : 'white';
-                detailsButton.style.borderColor = isWhite ? 'black' : 'transparent';
+                // detailsButton.style.backgroundColor = '#4CAF50'; // Always Green
+                detailsButton.style.color = 'white';
+                detailsButton.style.borderColor = 'transparent';
 
                 culturalPhotos.forEach(photo => {
                     photo.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.3)';
