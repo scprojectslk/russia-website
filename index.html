@@ -83,11 +83,7 @@
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .features-table:hover {
-            transform: translateY(-2px);
+            /* Removed transition from the table itself */
         }
 
         .features-table th {
@@ -184,6 +180,31 @@
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuresTableBody = document.querySelector('.features-table tbody');
+            const featuresData = [
+                { feature: 'Capital City', details: 'Moscow' },
+                { feature: 'Currency', details: 'Russian Ruble (RUB)' },
+                { feature: 'Calling Code', details: '+7' },
+                { feature: 'Time Zones', details: 'UTC+2 to UTC+12' },
+                { feature: 'Largest City', details: 'Moscow' }
+            ];
+
+            featuresData.forEach(item => {
+                const row = document.createElement('tr');
+                const featureCell = document.createElement('td');
+                const detailsCell = document.createElement('td');
+
+                featureCell.textContent = item.feature;
+                detailsCell.textContent = item.details;
+
+                row.appendChild(featureCell);
+                row.appendChild(detailsCell);
+                featuresTableBody.appendChild(row);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="header">Russia</div>
@@ -200,23 +221,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>National Animal</td>
-                <td>Russian Brown Bear</td>
-            </tr>
-            <tr>
-                <td>National Flower</td>
-                <td>Chamomile</td>
-            </tr>
-            <tr>
-                <td>National Tree</td>
-                <td>Birch</td>
-            </tr>
-            <tr>
-                <td>Official Language</td>
-                <td>Russian</td>
-            </tr>
-        </tbody>
+            </tbody>
     </table>
 
     <div class="cultural-review">
