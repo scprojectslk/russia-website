@@ -6,32 +6,28 @@
     <title>Russia</title>
     <style>
         body {
-            background-color: #0039A6; /* Russian Flag Blue */
-            color: white; /* Default text color to white */
+            background-color: #0039A6; /* Initial background: Russian Flag Blue */
+            color: white;
             margin: 0;
             padding-top: 20px;
             font-family: sans-serif;
-            transition: background-color 0.3s ease-in-out;
+            transition: background-color 1s ease-in-out; /* Smooth transition */
         }
 
-        body:hover {
-            background-color: #002a7a;
-        }
-
-        /* Styling for the header */
+        /* Rest of your CSS remains the same */
         .header {
-            background: linear-gradient(to bottom, #FFFFFF 20%, #0039A6 40%, #0039A6 60%, #D52B1E 80%); /* Adjusted gradient */
-            color: black; /* Font color is black */
-            padding: 20px 30px; /* Adjusted padding */
+            background: linear-gradient(to bottom, #FFFFFF 20%, #0039A6 40%, #0039A6 60%, #D52B1E 80%);
+            color: black;
+            padding: 20px 30px;
             text-align: center;
-            font-size: 3.8em; /* Slightly larger font size */
-            font-family: 'Impact', sans-serif; /* Using Impact font */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
-            border: 3px solid black; /* Thicker black border */
+            font-size: 3.8em;
+            font-family: 'Impact', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border: 3px solid black;
             box-sizing: border-box;
             margin-bottom: 20px;
-            text-transform: uppercase; /* Block capitals */
-            letter-spacing: 0.1em; /* Slight letter spacing */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
@@ -40,7 +36,6 @@
             box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
         }
 
-        /* Styling for the country image */
         .country-image {
             display: block;
             margin: 20px auto;
@@ -59,7 +54,7 @@
 
         p {
             color: white;
-            background-color: #0039A6; /* Russian Flag Blue for paragraph background */
+            background-color: #0039A6;
             padding: 15px;
             margin: 20px auto;
             width: 80%;
@@ -73,17 +68,15 @@
             box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
         }
 
-        /* Styling for the table */
         .features-table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent for overall table */
+            background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             box-sizing: border-box;
             border-radius: 5px;
-            /* Removed transition from the table itself */
         }
 
         .features-table th {
@@ -91,14 +84,14 @@
             color: white;
             padding: 10px;
             text-align: left;
-            cursor: pointer; /* Indicate sortable columns */
+            cursor: pointer;
         }
 
         .features-table td {
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 10px;
             text-align: left;
-            background-color: #0039A6; /* Russian Flag Blue for table data cells */
+            background-color: #0039A6;
             transition: background-color 0.2s ease-in-out;
         }
 
@@ -106,11 +99,10 @@
             background-color: #003080;
         }
 
-        /* Styling for the cultural review section */
         .cultural-review {
             margin: 20px auto;
             width: 80%;
-            background-color: #0039A6; /* Russian Flag Blue for cultural review */
+            background-color: #0039A6;
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-sizing: border-box;
@@ -127,7 +119,7 @@
             flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 20px;
-            justify-content: center; /* Center the images horizontally */
+            justify-content: center;
         }
 
         .cultural-photo-item {
@@ -135,12 +127,12 @@
         }
 
         .cultural-photo {
-            max-width: 150px; /* Reduced image width */
+            max-width: 150px;
             height: auto;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-sizing: border-box;
             border-radius: 5px;
-            margin: 0 10px; /* Add some horizontal margin around each image */
+            margin: 0 10px;
             transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             cursor: pointer;
         }
@@ -152,18 +144,17 @@
         }
 
         .cultural-description {
-            margin-top: 5px; /* Reduced margin above description */
+            margin-top: 5px;
             color: white;
             text-align: center;
-            font-size: 0.9em; /* Slightly smaller font for description */
+            font-size: 0.9em;
         }
 
-        /* Styling for the button */
         .details-button {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #4CAF50; /* Green color */
+            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
@@ -183,6 +174,18 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const colors = ['#FFFFFF', '#0039A6', '#D52B1E']; // White, Blue, Red
+            let colorIndex = 0;
+
+            function changeBackgroundColor() {
+                body.style.backgroundColor = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }
+
+            setInterval(changeBackgroundColor, 5000); // Change every 5 seconds
+
+            // Dynamic Features Table (from previous step)
             const featuresTableBody = document.querySelector('.features-table tbody');
             const featuresData = [
                 { feature: 'National Animal', details: 'Russian Brown Bear' },
@@ -197,7 +200,7 @@
             ];
 
             function populateTable(data) {
-                featuresTableBody.innerHTML = ''; // Clear existing rows
+                featuresTableBody.innerHTML = '';
                 data.forEach(item => {
                     const row = document.createElement('tr');
                     const featureCell = document.createElement('td');
@@ -212,9 +215,8 @@
                 });
             }
 
-            populateTable(featuresData); // Initial population
+            populateTable(featuresData);
 
-            // Add sorting functionality (basic alphabetical sort)
             const headers = document.querySelectorAll('.features-table th');
             headers.forEach((header, index) => {
                 header.addEventListener('click', () => {
