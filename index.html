@@ -147,10 +147,10 @@
             margin-top: 5px;
             text-align: center;
             font-size: 0.9em;
-            transition: color 1s ease-in-out, background-color 1s ease-in-out; /* Added background-color transition */
-            background-color: transparent; /* Initially transparent */
-            padding: 5px; /* Add some padding for background to be visible */
-            border-radius: 3px; /* Optional: add a subtle background shape */
+            transition: color 1s ease-in-out, background-color 1s ease-in-out;
+            background-color: transparent;
+            padding: 5px;
+            border-radius: 3px;
         }
 
         .details-button {
@@ -165,7 +165,7 @@
             border-radius: 5px;
             text-align: center;
             width: fit-content;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  color 1s ease-in-out, border-color 1s ease-in-out, background-color 1s ease-in-out; /* Added background-color transition */
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,  color 1s ease-in-out, border-color 1s ease-in-out, background-color 1s ease-in-out;
         }
 
         .details-button:hover {
@@ -177,11 +177,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
-            const paragraphs = document.querySelectorAll('p');
+            const elementsWithBg = document.querySelectorAll('body, p, .features-table, .features-table th, .features-table td, .cultural-review, .cultural-description, .details-button');
             const table = document.querySelector('.features-table');
             const tableHeaders = document.querySelectorAll('.features-table th');
             const tableData = document.querySelectorAll('.features-table td');
-            const culturalReview = document.querySelector('.cultural-review');
             const culturalDescriptions = document.querySelectorAll('.cultural-description');
             const detailsButton = document.querySelector('.details-button');
             const culturalPhotos = document.querySelectorAll('.cultural-photo');
@@ -193,37 +192,18 @@
                 const currentColor = colors[colorIndex];
                 const isWhite = currentColor === '#FFFFFF';
 
-                body.style.backgroundColor = currentColor;
-                body.style.color = isWhite ? 'black' : 'white';
-
-                paragraphs.forEach(p => {
-                    p.style.backgroundColor = currentColor;
-                    p.style.color = isWhite ? 'black' : 'white';
-                    p.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
+                elementsWithBg.forEach(element => {
+                    element.style.backgroundColor = currentColor;
+                    element.style.color = isWhite ? 'black' : 'white';
+                    element.style.borderColor = isWhite ? 'black' : 'transparent'; // Default border to transparent, adjust if needed
                 });
 
-                table.style.backgroundColor = isWhite ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+                // Special handling for table borders
                 table.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
-                table.style.color = isWhite ? 'black' : 'white';
-
-                tableHeaders.forEach(header => {
-                    header.style.backgroundColor = currentColor;
-                    header.style.color = isWhite ? 'black' : 'white';
-                    header.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
-                });
-
-                tableData.forEach(data => {
-                    data.style.backgroundColor = currentColor;
-                    data.style.color = isWhite ? 'black' : 'white';
-                    data.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)';
-                });
-
-                culturalReview.style.backgroundColor = currentColor;
-                culturalReview.style.color = isWhite ? 'black' : 'white';
-                culturalReview.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)';
+                tableHeaders.forEach(th => th.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.2)');
+                tableData.forEach(td => td.style.borderColor = isWhite ? 'black' : 'rgba(255,255,255,0.1)');
 
                 culturalDescriptions.forEach(description => {
-                    description.style.backgroundColor = currentColor;
                     description.style.color = isWhite ? 'black' : 'white';
                 });
 
